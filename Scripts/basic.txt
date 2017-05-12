@@ -1,0 +1,29 @@
+enable
+clock set hh:mm:ss dd month yr
+config t
+hostname xxxx
+banner motd #unauthorised access is prohibited#
+enable secret xxxx
+line con 0
+exec-timeout 0 15
+password xxxx
+login
+exit
+line vty 0 15
+password xxxx
+login
+exit
+service password-encryption
+exit
+copy running-config startup-config
+
+######## optional
+line aux
+password xxxx
+login
+exit
+
+
+show runnig-config
+erase startup-config
+description Wan to SF circuit number : done on a specific interface
