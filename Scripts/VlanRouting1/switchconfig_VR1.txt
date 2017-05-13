@@ -1,0 +1,43 @@
+
+enable
+clock set hh:mm:ss dd month yr
+config t
+hostname MainSwitch
+banner motd #unauthorised access is prohibited#
+enable secret cisco
+line con 0
+exec-timeout 0 15
+password cisco
+login
+exit
+line vty 0 15
+password cisco
+login
+exit
+service password-encryption
+exit
+vlan 33
+name Reception
+exit
+vlan 13
+name Billing
+exit
+vlan 20
+name Admin
+exit
+int range fa0/1-8
+switchport mode access
+switchport access vlan 33
+exit
+int range fa0/9-16
+switchport mode access
+switchport access vlan 20
+exit
+int range fa0/1-8
+switchport mode access
+switchport access vlan 33
+exit
+int gig0/1             : port to router
+switchport mode trunk
+
+copy running-config startup-config

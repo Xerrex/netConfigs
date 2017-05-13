@@ -1,0 +1,32 @@
+enable
+clock set hh:mm:ss dd month yr
+config t
+hostname xxxx
+banner motd #unauthorised access is prohibited#
+enable secret cisco
+line con 0
+exec-timeout 0 15
+password cisco
+login
+exit
+line vty 0 15
+password cisco
+login
+exit
+line aux 0
+password cisco
+login
+exit
+
+int fa0/0   port to switch:
+no ip address
+no shutdown
+int fa0/0.1
+encapsulation dot1q 33
+ip address 172.16.0.1 255.255.255.224
+int fa0/0.2
+encapsulation dot1q 13
+ip address 172.16.0.33 255.255.255.224
+int fa0/0.3
+encapsulation dot1q 20
+ip address 172.16.0.65 255.255.255.224
