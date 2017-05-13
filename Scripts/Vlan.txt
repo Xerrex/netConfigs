@@ -1,0 +1,12 @@
+enable
+config t
+vlan X    eg vlan 2
+name XXXX eg name admin
+exit
+
+show ip int brief : getting all fastethernet interfaces
+
+int range fa0/1 - 4
+switchport access vlan 2
+exit
+do show vlan breif :to verify configs
