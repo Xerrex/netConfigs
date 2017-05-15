@@ -1,0 +1,13 @@
+#run basic configs
+#config Vlans
+#vlan 10 ports:1-8 Staff
+#vlan 11 ports:9-14 Managers
+#vlan 12 ports:16 -24 Med Stuff
+
+###SW1
+config t
+vtp mode server/client/transparent
+vtp domain cisco
+vtp password cisco
+int range gig0/1-2
+switchport mode trunk
