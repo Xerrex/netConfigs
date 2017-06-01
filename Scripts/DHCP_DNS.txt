@@ -1,0 +1,31 @@
+#configs run on router onstick
+#demo file:illustrations/DCHP_DNS.pkt
+
+#dhcp pool
+#billing 172.16.0.32/27  gateway:172.16.0.33 dns:172.16.0.34
+#admin 172.16.0.64/27    gateway:172.16.0.65 dns:172.16.0.66
+#reception 172.16.0.0/27 gateway:172.16.0.1  dns:172.16.0.2
+
+
+config t
+ip dhcp pool reception
+network 172.16.0.0 255.255.255.224
+default-router 172.16.0.1
+dns-server 172.168.0.2
+exit
+ip dhcp excluded-address 172.16.0.1 172.168.0.2
+ip dhcp pool admin
+network 172.16.0.64 255.255.255.224
+default-router 172.16.0.65
+dns-server 172.168.0.66
+exit
+ip dhcp excluded-address 172.16.0.65 172.168.0.66
+ip dhcp pool biling
+network 172.16.0.32 255.255.255.224
+default-router 172.16.0.33
+dns-server 172.168.0.34
+exit
+ip dhcp excluded-address 172.16.0.33 172.168.0.34
+
+verify then configs:
+copy running-config startup-config

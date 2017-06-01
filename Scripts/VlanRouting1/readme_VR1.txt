@@ -1,5 +1,5 @@
-config are for router on a stick
-
+#config are for router on a stick
+#demo file:illustrations/VroutingRouter_stick.pkt
 
 vlan 13 billing
 172.16.0.32/27
